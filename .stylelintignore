@@ -1,0 +1,5 @@
+node_modules/
+build/
+frontend/icons/
+frontend/assets/sass/utility/
+frontend/assets/sass/_settings.scss

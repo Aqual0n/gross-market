@@ -1,0 +1,75 @@
+.container {
+    box-sizing: border-box;
+    padding: 0 4.6875%;
+    margin: 0 auto;
+    max-width: $maxRems;
+
+    @media (min-width: $desktop) {
+        padding: 0 rem(100);
+    }
+}
+
+.swiper-wrapper {
+    height: auto !important;
+}
+
+.button,
+button {
+    border: none;
+    cursor: pointer;
+    font-family: $reg;
+    background: none;
+    box-sizing: border-box;
+    padding: 0;
+}
+
+*:focus {
+    outline: none;
+}
+
+a {
+    text-decoration: none;
+}
+
+input {
+    border-radius: 0;
+}
+
+textarea {
+    resize: none;
+}
+
+input,
+textarea {
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    appearance: none;
+    display: block;
+    background-color: transparent;
+    box-sizing: border-box;
+    border: none;
+    padding: 0;
+    font-family: $reg;
+    width: 100%;
+    color: #000;
+
+    &::-webkit-input-placeholder {
+        font-size: inherit;
+        font-family: inherit;
+    }
+
+    &::-moz-placeholder {
+        font-size: inherit;
+        font-family: inherit;
+    }
+
+    &:-moz-placeholder {
+        font-size: inherit;
+        font-family: inherit;
+    }
+
+    &:-ms-input-placeholder {
+        font-size: inherit;
+        font-family: inherit;
+    }
+}
