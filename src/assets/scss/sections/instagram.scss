@@ -1,0 +1,108 @@
+.instagram {
+    padding-top: rem(48);
+
+    &__title {
+        margin-bottom: rem(32);
+    }
+
+    &__image {
+        background-color: $gray;
+        border-radius: rem(8);
+        width: 100%;
+
+        & + & {
+            margin-top: rem(12);
+        }
+
+        img {
+            width: 100%;
+            height: rem(346);
+            object-fit: cover;
+            border-radius: rem(8);
+        }
+    }
+
+    &__button {
+        width: 100%;
+        margin-top: rem(12);
+    }
+
+    &__wrapper {
+        overflow: hidden;
+        transition: 0.3s ease;
+        transition-property: height;
+    }
+
+    @media (min-width: $tablet) {
+        padding-top: rem(72);
+
+        &__list {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: space-between;
+        }
+
+        &__image {
+            width: rem(210);
+            margin-bottom: rem(30);
+
+            & + & {
+                margin-top: 0;
+            }
+
+            img {
+                height: rem(210);
+            }
+
+            &--1,
+            &--2 {
+                width: rem(330);
+
+                img {
+                    height: rem(330);
+                }
+            }
+        }
+
+        &__button {
+            margin-top: 0;
+        }
+    }
+
+    @media (min-width: $desktop) {
+        &__list {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            grid-column-gap: rem(30);
+            grid-row-gap: rem(30);
+            grid-auto-flow: dense;
+        }
+
+        &__image {
+            width: rem(255);
+            height: rem(255);
+            margin: 0;
+
+            & + & {
+                margin-top: 0;
+            }
+
+            img {
+                height: 100%;
+            }
+
+            &--1 {
+                width: auto;
+                height: auto;
+                grid-column-start: 1;
+                grid-column-end: 3;
+                grid-row-start: 1;
+                grid-row-end: 3;
+            }
+        }
+
+        &__button {
+            margin-top: rem(30);
+        }
+    }
+}

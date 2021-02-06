@@ -115,7 +115,6 @@ export default {
             this.mainSlider.slideNext();
         },
         onSlideChange() {
-            console.log(this.mainSlider.activeIndex);
             this.slider.disableNavigation.prev = !this.mainSlider.progress;
             this.slider.disableNavigation.next =
                 this.mainSlider.activeIndex === this.$refs.slide.length - 1;
