@@ -1,17 +1,12 @@
 @mixin newFont($family,$pathName) {
     @font-face {
         font-family: '#{$family}';
-        src: url('/public/fonts/#{$pathName}.woff2') format('woff2'), url('/public/fonts/#{$pathName}.woff') format('woff');
+        src: url('~@/assets/fonts/#{$pathName}.woff2') format('woff2'), url('~@/assets/fonts/#{$pathName}.woff') format('woff');
         font-weight: normal;
         font-style: normal;
     }
 }
 
-//@font-face {
-//    font-family: 'icon';
-//    src: url('/public/fonts/icomoon.woff') format('woff'), url('/public/fonts/icomoon.woff2') format('woff2');
-//    font-weight: normal;
-//    font-style: normal;
-//}
-//
-//@include newFont('rubik-reg','Rubik-Regular');
+@include newFont('icon','icomoon');
+@include newFont('reg','EuclidCircularB-Regular');
+@include newFont('med','EuclidCircularB-Medium');

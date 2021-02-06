@@ -11,12 +11,15 @@
 //colors
 $black: #000;
 $white: #fff;
+$gray: #F5F5F5;
+$yellow: #FFDF31;
 
 //fonts
-$icon: icon, sans-serif;
+$icon: 'icon', sans-serif;
 
 // this is an example
 $reg: 'reg', -apple-system, system-ui, blinkmacsystemfont, 'Lucida Grande', 'Lucida Sans Unicode', 'sans-serif';
+$med: 'med', -apple-system, system-ui, blinkmacsystemfont, 'Lucida Grande', 'Lucida Sans Unicode', 'sans-serif';
 
 //breakpoints
 $mobileScaleStop: 560px;
@@ -30,6 +33,6 @@ $maxRems: 1600px;
 
 // these breakpoints used in scaling calculations
 // and should be adjusted to the design layout
-$designTablet: 960px;
-$designDesktop: 1472px;
+$designTablet: 768px;
+$designDesktop: 1440px;
 

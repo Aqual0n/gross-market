@@ -1,4 +1,70 @@
-/* header here */
 .header {
-    font-size: rem(20);
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    background-color: $white;
+    z-index: 2;
+
+    &__container {
+        height: rem(78);
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+    }
+
+    &__logo {
+        img {
+            width: rem(185);
+        }
+    }
+
+    &__phone {
+        font-size: 0;
+        color: $black;
+        margin-right: rem(17);
+
+        &::before {
+            font-family: $icon;
+            content: '\e901';
+            font-size: rem(24);
+            line-height: rem(24);
+        }
+    }
+
+    &__button {
+        display: none;
+    }
+
+    @media (min-width: $tablet) {
+        &__container {
+            height: rem(111);
+        }
+
+        &__logo {
+            img {
+                width: rem(245);
+            }
+        }
+
+        &__right {
+            display: flex;
+            align-items: center;
+        }
+
+        &__phone {
+            font-size: rem(18);
+            line-height: rem(23);
+            margin-right: rem(32);
+            font-family: $med;
+
+            &::before {
+                display: none;
+            }
+        }
+
+        &__button {
+            display: block;
+        }
+    }
 }

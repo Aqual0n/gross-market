@@ -1,4 +1,140 @@
 .main {
-    margin: 0;
-    font-size: rem(24);
+    padding-top: rem(126);
+    background-color: $gray;
+
+    &__title {
+        margin-bottom: rem(48);
+    }
+
+    &__label {
+        position: absolute;
+        display: inline-block;
+        background-color: $white;
+        font-family: $med;
+        font-size: rem(24);
+        line-height: rem(30);
+        padding: rem(12) rem(16);
+        border-radius: rem(40);
+
+        &--top-right {
+            top: rem(96);
+            right: rem(14);
+        }
+
+        &--bottom-left {
+            bottom: rem(90);
+            left: rem(15);
+        }
+    }
+
+    &__image {
+        width: 108.7%;
+        position: relative;
+        margin: 0 -4.4%;
+
+        img {
+            width: 100%;
+        }
+    }
+
+    &__navigation {
+        @media (max-width: $maxMobile) {
+            display: none;
+        }
+    }
+
+    @media (min-width: $tablet) {
+        padding: 0;
+        position: relative;
+
+        &__slide {
+            position: relative;
+            padding-top: rem(159);
+            padding-bottom: rem(154);
+        }
+
+        &__title {
+            margin-bottom: 0;
+            max-width: rem(445);
+        }
+
+        &__label {
+            &--top-right {
+                top: rem(48);
+                right: rem(40);
+            }
+
+            &--bottom-left {
+                bottom: rem(48);
+                left: rem(80);
+            }
+        }
+
+        &__image {
+            width: rem(367);
+            margin: 0;
+            position: absolute;
+            right: 0;
+            top: rem(111);
+            z-index: 2;
+        }
+
+        &__navigation {
+            box-sizing: border-box;
+            border-radius: rem(8);
+            width: rem(88);
+            height: rem(44);
+            position: absolute;
+            bottom: rem(48);
+            left: rem(39);
+            background-color: $white;
+            z-index: 3;
+        }
+
+        &__button {
+            &--prev {
+                transform: rotate(180deg);
+            }
+        }
+    }
+
+    @media (min-width: $desktop) {
+        &__container {
+            position: relative;
+
+            &--navigation {
+                height: 100%;
+                position: absolute;
+                z-index: 2;
+                left: 50%;
+                transform: translateX(-50%);
+                top: 0;
+                width: 100%;
+                pointer-events: none;
+            }
+        }
+
+        &__label {
+            &--top-right {
+                right: rem(120);
+            }
+
+            &--bottom-left {
+                left: rem(120);
+            }
+        }
+
+        &__image {
+            width: rem(612);
+            top: rem(-48);
+            position: absolute;
+            right: rem(165);
+        }
+
+        &__navigation {
+            pointer-events: all;
+            bottom: rem(48);
+            left: rem(165);
+        }
+    }
 }

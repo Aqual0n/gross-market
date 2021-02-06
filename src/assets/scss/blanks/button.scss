@@ -1,0 +1,43 @@
+.button {
+    box-sizing: border-box;
+
+    &--standart {
+        font-family: $med;
+        padding: 0 rem(16);
+        color: $black;
+        line-height: rem(47);
+        border-radius: rem(8);
+    }
+
+    &--font-size {
+        &-medium {
+            font-size: rem(18);
+        }
+    }
+
+    &--background {
+        &-yellow {
+            background-color: $yellow;
+        }
+    }
+
+    &--navigation {
+        width: rem(44);
+        transition: 0.3s ease;
+        transition-property: opacity;
+
+        &::before {
+            font-family: $icon;
+            content: '\e900';
+            font-size: rem(12);
+            line-height: rem(44);
+        }
+
+        &.disabled {
+            opacity: 0.2;
+        }
+    }
+
+    //@media (min-width: $tablet) {
+    //}
+}
