@@ -1,0 +1,49 @@
+.vacancies {
+    padding-top: rem(48);
+
+    &__title {
+        margin-bottom: rem(32);
+    }
+
+    &__item {
+        width: rem(252);
+        height: rem(344);
+    }
+
+    &__navigation {
+        @media (max-width: $maxTablet) {
+            display: none;
+        }
+    }
+
+    @media (min-width: $tablet) {
+        padding-top: rem(72);
+
+        &__item {
+            width: rem(300);
+            height: rem(410);
+        }
+    }
+
+    @media (min-width: $desktop) {
+        &__container {
+            position: relative;
+        }
+
+        &__navigation {
+            position: absolute;
+            right: rem(165);
+        }
+
+        &__button {
+            &--prev {
+                transform: scaleX(-1);
+            }
+        }
+
+        &__item {
+            width: rem(350);
+            height: rem(482);
+        }
+    }
+}

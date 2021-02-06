@@ -26,7 +26,7 @@ include ../../../tools/mixins.pug
                 +e.container.container
                     +e.title.title--h1 {{ slide.title }}
                     +e.image
-                        +e.label(
+                        +e.label.tag(
                             v-for="label in slide.labels"
                             :class="`main__label--${label.position}`"
                         ) {{ label.text }}

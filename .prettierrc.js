@@ -5,17 +5,10 @@ module.exports = {
     singleQuote: true,
     endOfLine: 'auto',
     plugins: ['@prettier/plugin-pug'],
-    overrides: [
-        {
-            files: ['*.vue'],
-            options: {
-                pugSingleQuote: false,
-                pugAttributeSeparator: 'none',
-                pugClosingBracketPosition: 'new-line',
-                pugPrintWidth: 1,
-                pugSemi: false,
-                pugWrapAttributesPattern: '0',
-            },
-        },
-    ],
+    pugSingleQuote: false,
+    pugAttributeSeparator: 'none',
+    pugClosingBracketPosition: 'new-line',
+    pugPrintWidth: 1,
+    pugSemi: false,
+    pugWrapAttributesPattern: '0',
 };

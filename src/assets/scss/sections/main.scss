@@ -7,15 +7,6 @@
     }
 
     &__label {
-        position: absolute;
-        display: inline-block;
-        background-color: $white;
-        font-family: $med;
-        font-size: rem(24);
-        line-height: rem(30);
-        padding: rem(12) rem(16);
-        border-radius: rem(40);
-
         &--top-right {
             top: rem(96);
             right: rem(14);
@@ -93,7 +84,7 @@
 
         &__button {
             &--prev {
-                transform: rotate(180deg);
+                transform: scaleX(-1);
             }
         }
     }

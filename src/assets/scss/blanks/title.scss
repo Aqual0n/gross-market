@@ -6,10 +6,20 @@
         line-height: rem(44);
     }
 
+    &--h2 {
+        font-size: rem(24);
+        line-height: rem(30);
+    }
+
     @media (min-width: $tablet) {
         &--h1 {
             font-size: rem(72);
             line-height: rem(66);
+        }
+
+        &--h2 {
+            font-size: rem(32);
+            line-height: rem(41);
         }
     }
 }
