@@ -1,0 +1,117 @@
+.footer {
+    background-color: $gray;
+    padding-top: rem(48);
+    padding-bottom: rem(32);
+
+    &__container {
+        &--top {
+            @media (max-width: $maxMobile) {
+                padding: 0;
+            }
+        }
+    }
+
+    &__logo {
+        width: rem(185);
+        margin-bottom: rem(24);
+
+        img {
+            width: 100%;
+        }
+    }
+
+    &__share {
+        @media (max-width: $maxMobile) {
+            display: none;
+        }
+    }
+
+    &__panel {
+        box-sizing: border-box;
+        width: 100%;
+        padding: rem(24) 0 rem(24) 4%;
+        background-color: $white;
+    }
+
+    &__social {
+        & + & {
+            margin-left: rem(8);
+        }
+
+        &::before {
+            font-family: $icon;
+            font-size: rem(24);
+            line-height: rem(24);
+            color: $black;
+        }
+
+        &--fb {
+            &::before {
+                content: '\e902';
+            }
+        }
+
+        &--vk {
+            &::before {
+                content: '\e903';
+            }
+        }
+    }
+
+    &__bottom {
+        font-family: $med;
+        padding-top: rem(24);
+        font-size: rem(14);
+        line-height: rem(18);
+    }
+
+    &__privacy {
+        margin-bottom: rem(24);
+    }
+
+    @media (min-width: $tablet) {
+        padding-top: rem(72);
+
+        &__logo {
+            width: rem(245);
+            margin-bottom: 0;
+            margin-right: rem(92);
+        }
+
+        &__share {
+            font-family: $med;
+            font-size: rem(32);
+            line-height: rem(41);
+            margin-right: auto;
+        }
+
+        &__panel {
+            display: flex;
+            align-items: center;
+            padding: rem(24);
+        }
+
+        &__bottom {
+            display: flex;
+        }
+
+        &__copyright {
+            order: -1;
+        }
+
+        &__privacy {
+            margin-bottom: 0;
+            margin-left: rem(218);
+        }
+    }
+
+    @media (min-width: $desktop) {
+        &__logo {
+            margin-right: rem(301);
+        }
+
+        &__privacy {
+            margin-left: rem(428);
+        }
+    }
+}
