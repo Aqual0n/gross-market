@@ -7,6 +7,12 @@
         color: $black;
         line-height: rem(47);
         border-radius: rem(8);
+        transition: 0.3s ease;
+        transition-property: background-color;
+    }
+
+    &--small-height {
+        line-height: rem(43);
     }
 
     &--font-size {
@@ -22,6 +28,10 @@
 
         &-gray {
             background-color: $gray;
+        }
+
+        &-white {
+            background-color: $white;
         }
     }
 

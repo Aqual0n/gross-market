@@ -1,0 +1,58 @@
+.geography {
+    padding-top: rem(48);
+
+    &__title {
+        margin-bottom: rem(32);
+    }
+
+    &__container {
+        &--map {
+            @media (max-width: $maxTablet) {
+                padding: 0;
+            }
+        }
+    }
+
+    &__map {
+        background-color: $gray;
+        box-sizing: border-box;
+        height: rem(600);
+        position: relative;
+    }
+
+    &__filter {
+        position: absolute;
+        bottom: rem(32);
+        left: rem(15);
+        width: rem(152);
+    }
+
+    &__button {
+        & + & {
+            margin-top: rem(8);
+        }
+    }
+
+    @media (min-width: $tablet) {
+        padding-top: rem(72);
+
+        &__filter {
+            bottom: rem(48);
+            left: rem(39);
+        }
+    }
+
+    @media (min-width: $desktop) {
+        padding: rem(72) 0;
+
+        &__filter {
+            bottom: rem(24);
+            left: rem(24);
+        }
+
+        &__map {
+            height: rem(540);
+            border-radius: rem(8);
+        }
+    }
+}

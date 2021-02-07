@@ -67,9 +67,13 @@ export default {
     },
     mounted() {
         this.$nextTick(() => {
-            this.setWrapperHeight();
+            this.onResize();
             this.checkButton();
         });
+        window.addEventListener('resize', this.onResize);
+    },
+    destroyed() {
+        window.removeEventListener('resize', this.onResize);
     },
     methods: {
         setWrapperHeight() {
@@ -87,6 +91,11 @@ export default {
             this.$nextTick(() => {
                 this.setWrapperHeight();
                 this.checkButton();
+            });
+        },
+        onResize() {
+            this.$nextTick(() => {
+                this.setWrapperHeight();
             });
         },
     },
