@@ -4,7 +4,9 @@ include ../../../tools/mixins.pug
     :class="`header--${color}`"
 )
     +e.container.container
-        +e.logo
+        +e.ROUTER-LINK.logo(
+            to="/"
+        )
             img(
                 src="/images/header/logo.svg"
             )
@@ -15,11 +17,15 @@ include ../../../tools/mixins.pug
                 +e.A.phone(
                     href="tel:+7 (926) 433-14-16"
                 ) +7 (926) 433-14-16
-                +e.BUTTON.button.button--standart.--font-size-medium.--background-yellow заполнить анкету
+                +e.ROUTER-LINK.button.button--standart.--font-size-medium.--background-yellow(
+                    to="/form"
+                ) заполнить анкету
             template(
                 v-if="state === 'form'"
             )
-                +e.close
+                +e.ROUTER-LINK.close(
+                    to="/"
+                )
 </template>
 
 <script>

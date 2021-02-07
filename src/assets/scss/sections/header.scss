@@ -3,8 +3,15 @@
     top: 0;
     left: 0;
     width: 100%;
-    background-color: $white;
     z-index: 2;
+
+    &--white {
+        background-color: $white;
+    }
+
+    &--gray {
+        background-color: $gray;
+    }
 
     &__container {
         height: rem(78);
@@ -36,6 +43,18 @@
         display: none;
     }
 
+    &__close {
+        display: block;
+        margin-right: rem(16);
+        color: $black;
+
+        &::before {
+            font-family: $icon;
+            content: '\e904';
+            font-size: rem(20);
+        }
+    }
+
     @media (min-width: $tablet) {
         &__container {
             height: rem(111);
@@ -65,6 +84,12 @@
 
         &__button {
             display: block;
+        }
+
+        &__close {
+            &::before {
+                font-size: rem(24);
+            }
         }
     }
 }

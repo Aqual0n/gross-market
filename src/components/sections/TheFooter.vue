@@ -3,7 +3,9 @@ include ../../../tools/mixins.pug
 +b.FOOTER.footer
     +e.container--top.container
         +e.panel
-            +e.logo
+            +e.ROUTER-LINK.logo(
+                to="/"
+            )
                 img(
                     src="/images/header/logo.svg"
                 )
