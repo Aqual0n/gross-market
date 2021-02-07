@@ -1,0 +1,65 @@
+.text {
+    *:first-child {
+        margin-top: 0;
+    }
+
+    *:last-child {
+        margin-bottom: 0;
+    }
+
+    h2,
+    .h2,
+    h3,
+    .h3 {
+        font-family: $med;
+    }
+
+    h2,
+    .h2 {
+        font-size: rem(48);
+        line-height: rem(44);
+        margin-bottom: rem(32);
+    }
+
+    h3,
+    .h3 {
+        font-size: rem(18);
+        line-height: rem(23);
+        margin: rem(24) 0;
+    }
+
+    p {
+        font-size: rem(14);
+        line-height: rem(22);
+        margin: rem(16) 0;
+
+        &.color-gray {
+            color: $grayDark;
+        }
+    }
+
+    @media (min-width: $tablet) {
+        h2,
+        .h2 {
+            font-size: rem(72);
+            line-height: rem(66);
+            margin-bottom: rem(48);
+        }
+
+        p {
+            & + h3,
+            & + .h3 {
+                margin-top: rem(48);
+            }
+        }
+    }
+
+    @media (min-width: $desktop) {
+        p {
+            & + h3,
+            & + .h3 {
+                margin-top: rem(48);
+            }
+        }
+    }
+}

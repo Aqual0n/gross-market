@@ -79,7 +79,6 @@ export default {
         setWrapperHeight() {
             const list = this.$refs.list;
             this.wrapperHeight = `${list.getBoundingClientRect().height}px`;
-            console.log(this.wrapperHeight);
         },
         checkButton() {
             if (this.show >= this.images.length) {
