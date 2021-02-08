@@ -1,0 +1,116 @@
+.input {
+    display: block;
+    position: relative;
+
+    &__label {
+        font-family: $med;
+        font-size: rem(14);
+        line-height: rem(18);
+        margin-bottom: rem(12);
+        display: block;
+    }
+
+    &__value {
+        transition: 0.3s ease;
+        transition-property: background-color, border-raduis;
+        font-family: $med;
+        background-color: $gray;
+        font-size: rem(18);
+        height: rem(47);
+        border-radius: rem(8);
+        box-sizing: border-box;
+        padding: 0 rem(16);
+
+        &::placeholder {
+            color: inherit;
+            opacity: 0.3;
+        }
+
+        &--textarea {
+            padding: rem(16);
+            height: rem(94);
+        }
+
+        &--select {
+            position: relative;
+
+            &::before {
+                transition: 0.3s ease;
+                transition-property: transform;
+                font-family: $icon;
+                font-size: rem(24);
+                content: '\e905';
+                position: absolute;
+                top: rem(12);
+                right: rem(16);
+            }
+
+            &.active {
+                &::before {
+                    transform: rotate(180deg);
+                }
+            }
+        }
+    }
+
+    &__selected {
+        position: absolute;
+        left: rem(16);
+        top: rem(12);
+    }
+
+    &__list {
+        position: absolute;
+        width: 100%;
+        left: 0;
+        top: 100%;
+        z-index: 1;
+        background-color: $gray;
+        padding-left: rem(16);
+        padding-bottom: rem(8);
+        box-sizing: border-box;
+        transition: 0.3s ease;
+        transition-property: opacity;
+        opacity: 0;
+        pointer-events: none;
+
+        &.active {
+            opacity: 1;
+            pointer-events: inherit;
+        }
+    }
+
+    &__item {
+        padding: rem(8) 0;
+
+        &:first-child {
+            padding-top: 0;
+        }
+    }
+
+    &__error {
+        position: absolute;
+        top: 100%;
+        left: 0;
+        padding-top: rem(2);
+        font-size: rem(14);
+        line-height: rem(18);
+        color: $red;
+        transition: 0.3s ease;
+        transition-property: opacity;
+        user-select: none;
+        opacity: 0;
+
+        &.active {
+            opacity: 1;
+        }
+    }
+
+    &.error {
+        .input {
+            &__value {
+                background-color: rgba($red, 0.3);
+            }
+        }
+    }
+}

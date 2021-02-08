@@ -1,5 +1,7 @@
 .button {
     box-sizing: border-box;
+    display: inline-block;
+    text-align: center;
 
     &--standart {
         font-family: $med;
@@ -11,13 +13,23 @@
         transition-property: background-color;
     }
 
-    &--small-height {
-        line-height: rem(43);
+    &--height {
+        &-small {
+            line-height: rem(43);
+        }
+
+        &-big {
+            line-height: rem(73);
+        }
     }
 
     &--font-size {
         &-medium {
             font-size: rem(18);
+        }
+
+        &-big {
+            font-size: rem(24);
         }
     }
 

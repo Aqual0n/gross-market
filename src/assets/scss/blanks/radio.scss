@@ -1,0 +1,60 @@
+.radio {
+    &__label,
+    &__name {
+        font-family: $med;
+        font-size: rem(14);
+        line-height: rem(18);
+    }
+
+    &__label {
+        margin-bottom: rem(24);
+    }
+
+    &__list {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        width: rem(284);
+    }
+
+    &__item {
+        display: flex;
+        align-items: center;
+    }
+
+    &__value {
+        width: rem(24);
+        height: rem(24);
+        margin-right: rem(12);
+        background-color: $gray;
+        border-radius: 50%;
+        position: relative;
+
+        &::before {
+            transition: 0.3s ease;
+            transition-property: opacity;
+            opacity: 0;
+            content: '';
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            background-color: $black;
+            width: rem(10);
+            height: rem(10);
+            border-radius: 50%;
+        }
+
+        &.active {
+            &::before {
+                opacity: 1;
+            }
+        }
+    }
+
+    @media (min-width: $desktop) {
+        &__list {
+            width: rem(225);
+        }
+    }
+}

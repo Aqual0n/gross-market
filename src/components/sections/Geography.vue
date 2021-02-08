@@ -6,7 +6,7 @@ include ../../../tools/mixins.pug
     +e.container--map.container
         +e.map
             +e.filter
-                +e.BUTTON.button.button--standart.--small-height.--font-size-medium(
+                +e.BUTTON.button.button--standart.--height-small.--font-size-medium(
                     v-for="(button, buttonIndex) in filter.buttons"
                     :class="buttonClass(buttonIndex)"
                     v-on:click="setFilter(buttonIndex)"

@@ -1,3 +1,80 @@
 .form-wrapper {
     padding-top: rem(126);
+    padding-bottom: rem(48);
+
+    &__title {
+        margin-bottom: rem(48);
+    }
+
+    &__motivation {
+        padding-top: rem(48);
+
+        p {
+            font-family: $med;
+            font-size: rem(24);
+            line-height: rem(30);
+            margin-bottom: rem(24);
+        }
+
+        span {
+            display: block;
+            font-family: $med;
+            font-size: rem(18);
+            line-height: rem(23);
+            margin-bottom: rem(24);
+        }
+    }
+
+    &__phone {
+        min-width: 100%;
+    }
+
+    @media (min-width: $tablet) {
+        padding-top: rem(183);
+        padding-bottom: rem(72);
+
+        &__title {
+            margin-bottom: rem(72);
+        }
+
+        &__motivation {
+            padding-top: rem(72);
+
+            p {
+                font-size: rem(32);
+                line-height: rem(41);
+            }
+        }
+    }
+
+    @media (min-width: $desktop) {
+        padding-top: rem(177);
+
+        &__title {
+            margin-bottom: rem(48);
+        }
+
+        &__wrapper {
+            display: flex;
+            align-items: flex-start;
+        }
+
+        &__column {
+            width: 50%;
+            box-sizing: border-box;
+
+            &--right {
+                padding-left: rem(125);
+            }
+        }
+
+        &__motivation {
+            padding-top: rem(32);
+            width: rem(445);
+
+            span {
+                max-width: rem(412);
+            }
+        }
+    }
 }

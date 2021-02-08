@@ -14,6 +14,7 @@ $white: #fff;
 $gray: #F5F5F5;
 $grayDark: #B3B3B3;
 $yellow: #FFDF31;
+$red: #FF6666;
 
 //fonts
 $icon: 'icon', sans-serif;
@@ -34,6 +35,8 @@ $maxRems: 1600px;
 
 // these breakpoints used in scaling calculations
 // and should be adjusted to the design layout
+$remDivider: 12px;
+$designMobile: 375px;
 $designTablet: 768px;
 $designDesktop: 1440px;
 

@@ -12,6 +12,7 @@
     "core-js": "^3.6.5",
     "scroll-lock": "^2.1.4",
     "swiper": "^6.4.10",
+    "v-mask": "^2.2.4",
     "vue": "^2.6.11",
     "vue-awesome-swiper": "^4.1.1",
     "vue-cli-plugin-pug": "^2.0.0",
