@@ -61,6 +61,31 @@ include ../../../tools/mixins.pug
                 :placeholder="fields.file.placeholder"
                 @input="inputFile"
             )
+        +e.line--small-margin
+            +e.checkbox.checkbox__(
+                v-on:click="toggleCheckbox"
+            )
+                +e.value(
+                    :class="{ active: fields.privacy.checked }"
+                )
+                    svg(
+                        width="13"
+                        height="11"
+                        viewBox="0 0 13 11"
+                        fill="none"
+                        xmlns="http://www.w3.org/2000/svg"
+                    )
+                        path(
+                            d="M1 5.5L3.76768 8.9963C4.17134 9.50623 4.94668 9.50124 5.34375 8.98615L11.5 1"
+                            stroke="black"
+                            stroke-width="2"
+                            stroke-linecap="round"
+                        )
+                +e.text я подтверждаю согласие на обработку персональных данных и принимаю условия рассмотрения обращений *
+        +e.line--small-margin
+            +e.BUTTON.button.button--standart.--font-size-medium(
+                :class="buttonClass"
+            ) отправить
     +e.preloader.form-step
     +e.response.form-step
 </template>
@@ -150,8 +175,23 @@ export default {
                 placeholder: 'выберете или перетащите файл',
                 value: null,
             },
+            privacy: {
+                required: true,
+                checked: false,
+            },
         },
     }),
+    computed: {
+        validated() {
+            return false;
+        },
+        buttonClass() {
+            if (this.validated) {
+                return 'button--background-yellow';
+            }
+            return 'button--background-gray';
+        },
+    },
     methods: {
         toggleSelect() {
             this.fields.select.active = !this.fields.select.active;
@@ -161,6 +201,9 @@ export default {
         },
         inputFile(file) {
             this.fields.file.value = file;
+        },
+        toggleCheckbox() {
+            this.fields.privacy.checked = !this.fields.privacy.checked;
         },
     },
 };

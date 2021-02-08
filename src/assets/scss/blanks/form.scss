@@ -1,4 +1,10 @@
 .form {
+    &__line {
+        & + &--small-margin {
+            margin-top: rem(24);
+        }
+    }
+
     &__line,
     &__input {
         & + & {
@@ -9,6 +15,10 @@
     &__file {
         width: 100%;
         margin-top: rem(12);
+    }
+
+    &__button {
+        width: 100%;
     }
 
     @media (min-width: $tablet) {

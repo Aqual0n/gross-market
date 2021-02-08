@@ -64,8 +64,12 @@
             box-sizing: border-box;
 
             &--right {
-                padding-left: rem(125);
+                padding-left: rem(115);
             }
+        }
+
+        &__form {
+            width: rem(540);
         }
 
         &__motivation {
