@@ -52,10 +52,14 @@ include ../../../tools/mixins.pug
                 :error="fields.email.error"
                 :errorText="fields.email.errorText"
             )
-        +e.line
+        +e.line--column
             +e.TEXTAREA-COMPONENT.input(
                 v-model="fields.textarea.value"
                 :label="fields.textarea.label"
+            )
+            +e.FILE-UPLOADER-COMPONENT.file(
+                :placeholder="fields.file.placeholder"
+                @input="inputFile"
             )
     +e.preloader.form-step
     +e.response.form-step
@@ -142,6 +146,10 @@ export default {
                 list: ['мужской', 'женский'],
                 required: false,
             },
+            file: {
+                placeholder: 'выберете или перетащите файл',
+                value: null,
+            },
         },
     }),
     methods: {
@@ -150,6 +158,9 @@ export default {
         },
         closeSelect() {
             this.fields.select.active = false;
+        },
+        inputFile(file) {
+            this.fields.file.value = file;
         },
     },
 };

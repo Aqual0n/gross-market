@@ -6,10 +6,19 @@
         }
     }
 
+    &__file {
+        width: 100%;
+        margin-top: rem(12);
+    }
+
     @media (min-width: $tablet) {
         &__line {
             display: flex;
             justify-content: space-between;
+
+            &--column {
+                flex-direction: column;
+            }
         }
 
         &__input {

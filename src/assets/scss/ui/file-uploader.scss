@@ -1,0 +1,46 @@
+.file-uploader {
+    position: relative;
+
+    &__value {
+        display: none;
+    }
+
+    &__button {
+        position: relative;
+        line-height: rem(47);
+        background-color: $gray;
+        border-radius: rem(8);
+        color: rgba($black, 0.3);
+        font-family: $med;
+        font-size: rem(14);
+        box-sizing: border-box;
+        padding-left: rem(52);
+
+        &::before {
+            position: absolute;
+            left: rem(16);
+            top: 50%;
+            transform: translateY(-50%);
+            font-family: $icon;
+            content: '\e906';
+            font-size: rem(24);
+        }
+    }
+
+    &__selected {
+        position: absolute;
+        top: 100%;
+        left: 0;
+        padding-top: rem(2);
+        font-size: rem(14);
+        line-height: rem(18);
+        transition: 0.3s ease;
+        transition-property: opacity;
+        user-select: none;
+        opacity: 0;
+
+        &.active {
+            opacity: 1;
+        }
+    }
+}
