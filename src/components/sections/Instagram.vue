@@ -6,11 +6,14 @@ include ../../../tools/mixins.pug
         +e.wrapper(
             :style="{ height: wrapperHeight }"
         )
-            +e.list(
+            +e.TRANSITION-GROUP.list(
                 ref="list"
+                tag="div"
+                :name="'move-down'"
             )
-                +e.image(
+                +e.image.move-item(
                     v-for="(image, index) in shownImages"
+                    :key="`image-${index}`"
                     :class="`instagram__image--${index + 1}`"
                 )
                     img(
@@ -23,7 +26,10 @@ include ../../../tools/mixins.pug
 </template>
 
 <script>
+import deviceSize from '../../mixins/deviceSize';
+
 export default {
+    mixins: [deviceSize],
     data: () => ({
         // this can be images from api for example
         images: [
@@ -64,6 +70,12 @@ export default {
 
             return images;
         },
+        addCount() {
+            if (!this.deviceSize.desktop) {
+                return 3;
+            }
+            return 4;
+        },
     },
     mounted() {
         this.$nextTick(() => {
@@ -77,7 +89,7 @@ export default {
     },
     methods: {
         setWrapperHeight() {
-            const list = this.$refs.list;
+            const list = this.$refs.list.$el;
             this.wrapperHeight = `${list.getBoundingClientRect().height}px`;
         },
         checkButton() {
@@ -86,7 +98,7 @@ export default {
             }
         },
         showMore() {
-            this.show += 5;
+            this.show += this.addCount;
             this.$nextTick(() => {
                 this.setWrapperHeight();
                 this.checkButton();

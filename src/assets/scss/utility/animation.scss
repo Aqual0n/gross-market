@@ -1,0 +1,24 @@
+.move-item {
+    transition: 0.4s;
+    transition-delay: 0.5s;
+    transition-property: opacity, transform;
+}
+
+.move-down-leave-to {
+    transform: translate3d(0, 0, 0);
+    transition: 0.4s ease;
+}
+
+.move-down-enter,
+.move-down-leave-to {
+    opacity: 0;
+    transform: translateY(10px);
+}
+
+.move-down-move {
+    transition: 0.4s ease;
+}
+
+.move-down-leave-active {
+    //position: absolute;
+}
