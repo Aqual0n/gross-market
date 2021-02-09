@@ -52,7 +52,6 @@ export default {
         },
         onDrop(event) {
             this.dragged = false;
-            console.log('File(s) dropped');
 
             // Prevent default behavior (Prevent file from being opened)
             event.preventDefault();

@@ -56,11 +56,12 @@ export default {
     }),
     methods: {
         sendForm(data) {
-            console.log(data);
             let formData = new FormData();
             Object.keys(data).forEach((key) => {
                 let field = data[key];
-                formData.append(key, field);
+                if (field || field === 0) {
+                    formData.append(key, field);
+                }
             });
             this.form.loading = true;
             animateScrollTo(0, {
@@ -84,8 +85,8 @@ export default {
                         }, 1000);
                     }
                 })
-                .catch((err) => {
-                    console.log(err);
+                .catch(() => {
+                    // todo: add error handling if it'll be neccesary
                     setTimeout(() => {
                         this.form.loading = false;
                         this.form.send = true;

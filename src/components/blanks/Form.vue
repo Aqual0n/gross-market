@@ -37,9 +37,9 @@ include ../../../tools/mixins.pug
                 @blur="validateField(fields.birthday)"
             )
             +e.RADIO-COMPONENT.input--small(
-                v-model="fields.radio.value"
-                :label="fields.radio.label"
-                :list="fields.radio.list"
+                v-model="fields.gender.value"
+                :label="fields.gender.label"
+                :list="fields.gender.list"
             )
         +e.line
             +e.INPUT-COMPONENT.input--small(
@@ -219,7 +219,7 @@ export default {
                 errorText: '',
                 required: true,
             },
-            radio: {
+            gender: {
                 value: 0,
                 label: 'Пол',
                 placeholder: 'test',
