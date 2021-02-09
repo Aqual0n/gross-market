@@ -1,4 +1,8 @@
 .form {
+    position: relative;
+    transition: 1s ease;
+    transition-property: height;
+
     &__line {
         & + &--small-margin {
             margin-top: rem(24);
@@ -26,6 +30,7 @@
         border-radius: rem(8);
         box-sizing: border-box;
         padding: rem(12) rem(16);
+        cursor: pointer;
     }
 
     &__label {
@@ -42,6 +47,66 @@
         font-family: $med;
         color: rgba($black, 0.3);
         margin-top: rem(24);
+    }
+
+    &__body {
+        transition: 0.3s ease;
+        transition-property: opacity, transform;
+    }
+
+    &__preloader,
+    &__response {
+        position: absolute;
+        left: 0;
+        top: 0;
+        width: 100%;
+        pointer-events: none;
+        transition: 0.3s ease;
+        transition-property: opacity;
+        opacity: 0;
+    }
+
+    &__preloader {
+        height: 100%;
+        background-color: rgba($white, 0.7);
+    }
+
+    &__response {
+        transform: translateY(10px);
+        transition-duration: 0.7s;
+        transition-property: opacity, transform;
+        transition-delay: 1s;
+    }
+
+    &.loading {
+        .form {
+            &__body {
+                transform: scale(0.95);
+            }
+
+            &__preloader {
+                opacity: 1;
+            }
+        }
+    }
+
+    &.send {
+        .form {
+            &__body {
+                pointer-events: none;
+                opacity: 0;
+                transform: translateY(-10px) scale(0.95);
+            }
+
+            &__preloader {
+                opacity: 0;
+            }
+
+            &__response {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
     }
 
     @media (min-width: $tablet) {
@@ -93,5 +158,22 @@
                 width: rem(255);
             }
         }
+    }
+}
+
+.response {
+    font-family: $med;
+
+    &__text {
+        font-size: rem(18);
+        line-height: rem(23);
+        margin: rem(24) 0;
+    }
+
+    &__quote {
+        font-size: rem(14);
+        line-height: rem(18);
+        padding-left: rem(12);
+        border-left: 3px solid $yellow;
     }
 }

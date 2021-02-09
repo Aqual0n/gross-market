@@ -9,6 +9,8 @@
   },
   "dependencies": {
     "@prettier/plugin-pug": "^1.13.3",
+    "animated-scroll-to": "^2.0.12",
+    "axios": "^0.21.1",
     "core-js": "^3.6.5",
     "scroll-lock": "^2.1.4",
     "swiper": "^6.4.10",

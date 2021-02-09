@@ -2,8 +2,11 @@
 include ../../../tools/mixins.pug
 +b.form(
     :style="{ height: formHeight }"
+    :class="{ loading: loading, send: send }"
 )
-    +e.body.form-step
+    +e.body.form-step(
+        ref="body"
+    )
         +e.line
             +e.SELECT-COMPONENT.input(
                 v-model="fields.select.value"
@@ -119,7 +122,12 @@ include ../../../tools/mixins.pug
                 v-on:click="sendForm"
             ) отправить
     +e.preloader.form-step
-    +e.response.form-step
+    +e.response.form-step.response__(
+        ref="response"
+    )
+        +e.text В 2020 году самыми востребованными умениями и качествами на рынке труда станут:
+        +e.quote Умение ставить цели, планировать свое время, инициативность, настойчивость, высокая мотивация, умение эффективно общаться, любознательность.
+        +e.text А профессиональным навыкам можно научить любого человека.
 </template>
 
 <script>
@@ -128,6 +136,7 @@ import Textarea from '../ui/Textarea';
 import Select from '../ui/Select';
 import Radio from '../ui/Radio';
 import FileUploader from '../ui/FileUploader';
+
 export default {
     components: {
         'input-component': Input,
@@ -135,6 +144,16 @@ export default {
         'select-component': Select,
         'radio-component': Radio,
         'file-uploader-component': FileUploader,
+    },
+    props: {
+        loading: {
+            type: Boolean,
+            required: true,
+        },
+        send: {
+            type: Boolean,
+            required: true,
+        },
     },
     data: () => ({
         formHeight: null,
@@ -267,6 +286,31 @@ export default {
 
             return noErrors;
         },
+        formData() {
+            let formData = {};
+            Object.keys(this.fields).forEach((key) => {
+                let field = this.fields[key];
+                if (field.type !== 'checkbox') {
+                    formData[key] = field.value;
+                }
+            });
+            return formData;
+        },
+    },
+    watch: {
+        send() {
+            setTimeout(() => {
+                this.setFormHeight();
+            }, 300);
+        },
+    },
+    mounted() {
+        this.onResize();
+
+        window.addEventListener('resize', this.onResize);
+    },
+    destroyed() {
+        window.removeEventListener('resize', this.onResize);
     },
     methods: {
         toggleSelect() {
@@ -275,8 +319,8 @@ export default {
         closeSelect() {
             this.fields.select.active = false;
         },
-        inputFile(file) {
-            this.fields.file.value = file;
+        inputFile(files) {
+            this.fields.file.value = files[0];
         },
         toggleCheckbox(field) {
             this.fields[field].checked = !this.fields[field].checked;
@@ -333,13 +377,34 @@ export default {
             let validated = true;
             Object.keys(this.fields).forEach((key) => {
                 let field = this.fields[key];
-                validated = this.validateField(field);
+                if (!this.validateField(field)) {
+                    validated = false;
+                }
             });
 
             return validated;
         },
         sendForm() {
             this.validate();
+            if (this.noErrors) {
+                this.$emit('sendForm', this.formData);
+            }
+        },
+        onResize() {
+            this.$nextTick(() => {
+                this.setFormHeight();
+            });
+        },
+        setFormHeight() {
+            if (!this.send) {
+                this.formHeight = `${
+                    this.$refs.body.getBoundingClientRect().height
+                }px`;
+            } else {
+                this.formHeight = `${
+                    this.$refs.response.getBoundingClientRect().height
+                }px`;
+            }
         },
     },
 };

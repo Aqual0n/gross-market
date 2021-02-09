@@ -1,9 +1,12 @@
 .form-wrapper {
     padding-top: rem(126);
     padding-bottom: rem(48);
+    overflow: hidden;
 
     &__title {
         margin-bottom: rem(48);
+        transition: 0.7s ease;
+        transition-property: opacity;
     }
 
     &__motivation {
@@ -14,6 +17,8 @@
             font-size: rem(24);
             line-height: rem(30);
             margin-bottom: rem(24);
+            transition: 0.7s ease;
+            transition-property: opacity;
         }
 
         span {
@@ -22,6 +27,9 @@
             font-size: rem(18);
             line-height: rem(23);
             margin-bottom: rem(24);
+            transition: 0.7s ease;
+            transition-property: opacity, height;
+            overflow: hidden;
         }
     }
 
@@ -49,6 +57,7 @@
 
     @media (min-width: $desktop) {
         padding-top: rem(177);
+        min-height: calc(100vh - 40.43333rem);
 
         &__title {
             margin-bottom: rem(48);

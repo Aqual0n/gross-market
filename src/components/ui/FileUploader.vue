@@ -11,7 +11,7 @@ include ../../../tools/mixins.pug
     +e.INPUT.value(
         type="file"
         ref="file"
-        v-on:input="onInput"
+        v-on:change="onInput"
     )
     +e.selected(
         :class="{ active: selected }"
@@ -36,7 +36,7 @@ export default {
 
             this.selected = target.value.split(/([\\/])/g).pop();
 
-            this.$emit('input', target);
+            this.$emit('input', target.files);
         },
         openInput() {
             this.$refs.file.click();
@@ -52,7 +52,7 @@ export default {
             this.$refs.file.files = files;
             this.$nextTick(() => {
                 this.selected = files[0].name;
-                this.$emit('input', this.$refs.file);
+                this.$emit('input', event.dataTransfer.files);
             });
         },
     },
