@@ -1,0 +1,7 @@
+.page {
+    transition: opacity 0.5s ease;
+
+    &.hide {
+        opacity: 0;
+    }
+}

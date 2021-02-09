@@ -24,13 +24,13 @@
 
     &__button {
         width: 100%;
-        margin-top: rem(12);
     }
 
     &__wrapper {
         overflow: hidden;
         transition: 0.3s ease;
         transition-property: height;
+        padding-bottom: rem(12);
     }
 
     @media (min-width: $tablet) {
@@ -64,8 +64,8 @@
             }
         }
 
-        &__button {
-            margin-top: 0;
+        &__wrapper {
+            padding-bottom: 0;
         }
     }
 
@@ -101,8 +101,8 @@
             }
         }
 
-        &__button {
-            margin-top: rem(30);
+        &__wrapper {
+            padding-bottom: rem(30);
         }
     }
 }

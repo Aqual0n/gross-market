@@ -1,5 +1,8 @@
 <template lang="pug">
-div
+.page(
+    :class="{ hide: pageTransition.hide }"
+)
+    header-component
     main-component
     vacancies-component
     instagram-component
@@ -14,6 +17,7 @@ div
 </template>
 
 <script>
+import TheHeader from '../components/sections/TheHeader';
 import Main from '../components/sections/Main.vue';
 import Vacancies from '../components/sections/Vacancies.vue';
 import Instagram from '../components/sections/Instagram.vue';
@@ -22,8 +26,10 @@ import TheFooter from '../components/sections/TheFooter.vue';
 import PopupPrivacy from '../components/sections/PopupPrivacy.vue';
 
 import popupParentLogic from '../mixins/popupParentLogic';
+import pageTransition from '../mixins/animation/pageTransition';
 export default {
     components: {
+        'header-component': TheHeader,
         'main-component': Main,
         'vacancies-component': Vacancies,
         'instagram-component': Instagram,
@@ -31,6 +37,6 @@ export default {
         'footer-component': TheFooter,
         'popup-privacy-component': PopupPrivacy,
     },
-    mixins: [popupParentLogic],
+    mixins: [popupParentLogic, pageTransition],
 };
 </script>

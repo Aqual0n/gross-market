@@ -53,6 +53,7 @@ export default {
     }),
     mounted() {
         document.addEventListener('scroll', this.onScroll);
+        this.onScroll();
     },
     destroyed() {
         document.removeEventListener('scroll', this.onScroll);
