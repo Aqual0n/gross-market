@@ -51,6 +51,23 @@
                 }
             }
         }
+
+        &--datepicker {
+            padding: 0;
+
+            input {
+                font-family: $med;
+                padding: 0 rem(16);
+                height: rem(47);
+                font-size: rem(18);
+
+                &::placeholder {
+                    font-size: inherit;
+                    color: inherit;
+                    opacity: 0.3;
+                }
+            }
+        }
     }
 
     &__selected {
@@ -104,6 +121,12 @@
         &.active {
             opacity: 1;
         }
+    }
+
+    .vdp-datepicker__calendar {
+        top: 105%;
+        left: 50%;
+        transform: translateX(-50%);
     }
 
     &.error {

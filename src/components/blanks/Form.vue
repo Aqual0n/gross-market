@@ -27,7 +27,7 @@ include ../../../tools/mixins.pug
                 @blur="validateField(fields.name)"
             )
         +e.line
-            +e.INPUT-COMPONENT.input--small(
+            +e.DATEPICKER-COMPONENT.input--small(
                 v-model="fields.birthday.value"
                 :label="fields.birthday.label"
                 :placeholder="fields.birthday.placeholder"
@@ -136,13 +136,14 @@ import Textarea from '../ui/Textarea';
 import Select from '../ui/Select';
 import Radio from '../ui/Radio';
 import FileUploader from '../ui/FileUploader';
-
+import Datepicker from '../ui/Datepicker';
 export default {
     components: {
         'input-component': Input,
         'textarea-component': Textarea,
         'select-component': Select,
         'radio-component': Radio,
+        'datepicker-component': Datepicker,
         'file-uploader-component': FileUploader,
     },
     props: {
