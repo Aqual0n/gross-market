@@ -2,6 +2,7 @@
 include ../../../tools/mixins.pug
 +b.HEADER.header(
     :class="`header--${color}`"
+    ref="header"
 )
     +e.container.container
         +e.ROUTER-LINK.logo(
@@ -19,6 +20,7 @@ include ../../../tools/mixins.pug
                 ) +7 (926) 433-14-16
                 +e.ROUTER-LINK.button.button--standart.--font-size-medium.--background-yellow(
                     to="/form"
+                    :class="{ active: showButton }"
                 ) заполнить анкету
             template(
                 v-if="state === 'form'"
@@ -29,7 +31,10 @@ include ../../../tools/mixins.pug
 </template>
 
 <script>
+import { getScroll } from '../../mixins/getScroll';
+
 export default {
+    mixins: [getScroll],
     props: {
         color: {
             required: false,
@@ -40,6 +45,26 @@ export default {
             required: false,
             type: String,
             default: 'default',
+        },
+    },
+    data: () => ({
+        showButton: false,
+    }),
+    mounted() {
+        document.addEventListener('scroll', this.onScroll);
+    },
+    destroyed() {
+        document.removeEventListener('scroll', this.onScroll);
+    },
+    methods: {
+        onScroll() {
+            this.$nextTick(() => {
+                if (this.$refs.header) {
+                    this.showButton =
+                        this.getScroll().y >=
+                        this.$refs.header.getBoundingClientRect().height;
+                }
+            });
         },
     },
 };

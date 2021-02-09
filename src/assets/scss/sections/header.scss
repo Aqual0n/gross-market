@@ -42,7 +42,20 @@
     }
 
     &__button {
-        display: none;
+        @media (max-width: $maxMobile) {
+            position: fixed;
+            top: rem(16);
+            left: 50%;
+            transform: translateX(-50%);
+            min-width: rem(345);
+            transition: 0.3s ease;
+            transition-property: opacity;
+            opacity: 0;
+
+            &.active {
+                opacity: 1;
+            }
+        }
     }
 
     &__close {

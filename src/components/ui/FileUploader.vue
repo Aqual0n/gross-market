@@ -3,8 +3,13 @@ include ../../../tools/mixins.pug
 +b.file-uploader(
     v-on:drop="onDrop"
     v-on:dragover.prevent
-    v-on:dragenter.prevent
+    v-on:dragenter.prevent="setDragCss('enter')"
+    v-on:dragleave.prevent="setDragCss('leave')"
 )
+    +e.zone(
+        :class="{ active: dragged }"
+    )
+        span Загрузить
     +e.button(
         v-on:click="openInput"
     ) {{ placeholder }}
@@ -29,6 +34,7 @@ export default {
     },
     data: () => ({
         selected: null,
+        dragged: false,
     }),
     methods: {
         onInput(e) {
@@ -41,7 +47,11 @@ export default {
         openInput() {
             this.$refs.file.click();
         },
+        setDragCss(event) {
+            this.dragged = event === 'enter';
+        },
         onDrop(event) {
+            this.dragged = false;
             console.log('File(s) dropped');
 
             // Prevent default behavior (Prevent file from being opened)
