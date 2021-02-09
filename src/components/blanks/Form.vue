@@ -122,6 +122,15 @@ include ../../../tools/mixins.pug
                 v-on:click="sendForm"
             ) отправить
     +e.preloader.form-step
+        .spinner
+            div
+            div
+            div
+            div
+            div
+            div
+            div
+            div
     +e.response.form-step.response__(
         ref="response"
     )
