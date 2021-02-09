@@ -21,6 +21,7 @@ include ../../../tools/mixins.pug
                 :label="fields.name.label"
                 :error="fields.name.error"
                 :errorText="fields.name.errorText"
+                @blur="validateField(fields.name)"
             )
         +e.line
             +e.INPUT-COMPONENT.input--small(
@@ -30,6 +31,7 @@ include ../../../tools/mixins.pug
                 :error="fields.birthday.error"
                 :errorText="fields.birthday.errorText"
                 :mask="fields.birthday.mask"
+                @blur="validateField(fields.birthday)"
             )
             +e.RADIO-COMPONENT.input--small(
                 v-model="fields.radio.value"
@@ -44,6 +46,7 @@ include ../../../tools/mixins.pug
                 :error="fields.phone.error"
                 :errorText="fields.phone.errorText"
                 :mask="fields.phone.mask"
+                @blur="validateField(fields.phone)"
             )
             +e.INPUT-COMPONENT.input--small(
                 v-model="fields.email.value"
@@ -51,6 +54,7 @@ include ../../../tools/mixins.pug
                 :placeholder="fields.email.placeholder"
                 :error="fields.email.error"
                 :errorText="fields.email.errorText"
+                @blur="validateField(fields.email)"
             )
         +e.line--column
             +e.TEXTAREA-COMPONENT.input(
@@ -66,7 +70,7 @@ include ../../../tools/mixins.pug
                 v-on:click="toggleCheckbox"
             )
                 +e.value(
-                    :class="{ active: fields.privacy.checked }"
+                    :class="{ active: fields.privacy.checked, error: fields.privacy.error }"
                 )
                     svg(
                         width="13"
@@ -85,6 +89,7 @@ include ../../../tools/mixins.pug
         +e.line--small-margin
             +e.BUTTON.button.button--standart.--font-size-medium(
                 :class="buttonClass"
+                v-on:click="sendForm"
             ) отправить
     +e.preloader.form-step
     +e.response.form-step
@@ -108,6 +113,7 @@ export default {
         formHeight: null,
         fields: {
             name: {
+                type: 'text',
                 value: '',
                 label: 'ФИО *',
                 placeholder: 'test',
@@ -116,6 +122,7 @@ export default {
                 required: true,
             },
             birthday: {
+                type: 'text',
                 value: '',
                 label: 'Дата рождения *',
                 placeholder: '28.07.2002',
@@ -125,6 +132,7 @@ export default {
                 mask: '##.##.####',
             },
             phone: {
+                type: 'phone',
                 value: '',
                 label: 'Контактый телефон *',
                 placeholder: '+7 (',
@@ -134,6 +142,7 @@ export default {
                 mask: '+7 (###) ### ## ##',
             },
             email: {
+                type: 'email',
                 value: '',
                 label: 'Электронная почта',
                 placeholder: 'example@mail.com',
@@ -176,20 +185,54 @@ export default {
                 value: null,
             },
             privacy: {
+                type: 'checkbox',
+                error: false,
                 required: true,
                 checked: false,
             },
         },
     }),
     computed: {
-        validated() {
-            return false;
-        },
         buttonClass() {
-            if (this.validated) {
+            if (this.noErrors) {
                 return 'button--background-yellow';
             }
             return 'button--background-gray';
+        },
+        noErrors() {
+            let noErrors = true;
+            const emailRegex = /\S+@\S+\.\S+/;
+
+            Object.keys(this.fields).forEach((key) => {
+                let field = this.fields[key];
+                switch (field.type) {
+                    case 'checkbox':
+                        if (!field.checked) {
+                            noErrors = false;
+                        }
+                        break;
+                    case 'text': {
+                        if (field.required && !field.value) {
+                            noErrors = false;
+                        }
+                        break;
+                    }
+                    case 'email': {
+                        if (!emailRegex.test(field.value) && field.value) {
+                            noErrors = false;
+                        }
+                        break;
+                    }
+                    case 'phone': {
+                        if (field.value.length < 18 || !field.value) {
+                            noErrors = false;
+                        }
+                        break;
+                    }
+                }
+            });
+
+            return noErrors;
         },
     },
     methods: {
@@ -204,6 +247,66 @@ export default {
         },
         toggleCheckbox() {
             this.fields.privacy.checked = !this.fields.privacy.checked;
+            if (this.fields.privacy.checked) {
+                this.fields.privacy.error = false;
+            }
+        },
+        validateField(field) {
+            let validated = true;
+            const emailRegex = /\S+@\S+\.\S+/;
+
+            switch (field.type) {
+                case 'checkbox':
+                    field.error = !field.checked;
+                    break;
+                case 'text': {
+                    field.error = !field.value;
+
+                    if (field.error) {
+                        field.errorText = 'поле не заполнено';
+                    } else {
+                        field.errorText = '';
+                    }
+                    break;
+                }
+                case 'email': {
+                    field.error = !emailRegex.test(field.value);
+
+                    if (field.error && field.value) {
+                        field.errorText = 'поле заполнено не корректно';
+                    } else {
+                        field.errorText = '';
+                        field.error = false;
+                    }
+                    break;
+                }
+                case 'phone': {
+                    field.error = field.value.length < 18 || !field.value;
+
+                    if (field.error && !field.value) {
+                        field.errorText = 'поле не заполнено';
+                    } else if (field.error) {
+                        field.errorText = 'поле заполнено не до конца';
+                    }
+                    break;
+                }
+            }
+
+            validated = field.error;
+
+            return validated;
+        },
+        validate() {
+            let validated = true;
+            Object.keys(this.fields).forEach((key) => {
+                let field = this.fields[key];
+                validated = this.validateField(field);
+            });
+
+            return validated;
+        },
+        sendForm() {
+            this.validate();
         },
     },
 };

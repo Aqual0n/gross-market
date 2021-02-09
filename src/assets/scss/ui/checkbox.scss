@@ -2,6 +2,8 @@
     display: flex;
 
     &__value {
+        transition: 0.3s ease;
+        transition-property: background-color;
         width: rem(24);
         height: rem(24);
         background-color: $gray;
@@ -32,6 +34,10 @@
                     stroke-dasharray: 34;
                 }
             }
+        }
+
+        &.error {
+            background-color: rgba($red, 0.3);
         }
     }
 
