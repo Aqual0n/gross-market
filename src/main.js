@@ -9,6 +9,19 @@ import VueAwesomeSwiper from 'vue-awesome-swiper';
 Swiper.use([Navigation]);
 Vue.use(VueAwesomeSwiper);
 
+import VueGoogleMaps from 'vue-googlemaps';
+Vue.use(VueGoogleMaps, {
+    installComponents: true,
+    load: {
+        apiKey: {
+            key: 'AIzaSyBBrz3p5oIhdD-cGUu5MF0ixHOg1go6bcI',
+            language: 'ru',
+        },
+        libraries: ['places'],
+        useBetaRenderer: false,
+    },
+});
+
 Vue.config.productionTip = false;
 
 new Vue({

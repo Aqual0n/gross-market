@@ -25,6 +25,7 @@
         bottom: rem(32);
         left: rem(15);
         width: rem(152);
+        z-index: 2;
     }
 
     &__button {
@@ -53,6 +54,7 @@
         &__map {
             height: rem(540);
             border-radius: rem(8);
+            overflow: hidden;
         }
     }
 }
