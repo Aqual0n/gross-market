@@ -1,6 +1,5 @@
 <template lang="pug">
 div
-    header-component
     main-component
     vacancies-component
     instagram-component
@@ -15,7 +14,6 @@ div
 </template>
 
 <script>
-import TheHeader from '../components/sections/TheHeader.vue';
 import Main from '../components/sections/Main.vue';
 import Vacancies from '../components/sections/Vacancies.vue';
 import Instagram from '../components/sections/Instagram.vue';
@@ -26,7 +24,6 @@ import PopupPrivacy from '../components/sections/PopupPrivacy.vue';
 import popupParentLogic from '../mixins/popupParentLogic';
 export default {
     components: {
-        'header-component': TheHeader,
         'main-component': Main,
         'vacancies-component': Vacancies,
         'instagram-component': Instagram,

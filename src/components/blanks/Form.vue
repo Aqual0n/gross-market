@@ -65,9 +65,36 @@ include ../../../tools/mixins.pug
                 :placeholder="fields.file.placeholder"
                 @input="inputFile"
             )
+        +e.line--wrap
+            +e.label Капча
+            +e.captcha(
+                v-on:click="toggleCheckbox('captcha')"
+            )
+                +e.checkbox.checkbox__.--center
+                    +e.value--white(
+                        :class="{ active: fields.captcha.checked, error: fields.captcha.error }"
+                    )
+                        svg(
+                            width="13"
+                            height="11"
+                            viewBox="0 0 13 11"
+                            fill="none"
+                            xmlns="http://www.w3.org/2000/svg"
+                        )
+                            path(
+                                d="M1 5.5L3.76768 8.9963C4.17134 9.50623 4.94668 9.50124 5.34375 8.98615L11.5 1"
+                                stroke="black"
+                                stroke-width="2"
+                                stroke-linecap="round"
+                            )
+                    +e.text--black я не робот
+                    +e.IMG.captcha(
+                        src="/images/form/captcha.png"
+                    )
+            +e.required * поля для обязательного заполнения
         +e.line--small-margin
             +e.checkbox.checkbox__(
-                v-on:click="toggleCheckbox"
+                v-on:click="toggleCheckbox('privacy')"
             )
                 +e.value(
                     :class="{ active: fields.privacy.checked, error: fields.privacy.error }"
@@ -190,6 +217,12 @@ export default {
                 required: true,
                 checked: false,
             },
+            captcha: {
+                type: 'checkbox',
+                error: false,
+                required: true,
+                checked: false,
+            },
         },
     }),
     computed: {
@@ -245,10 +278,10 @@ export default {
         inputFile(file) {
             this.fields.file.value = file;
         },
-        toggleCheckbox() {
-            this.fields.privacy.checked = !this.fields.privacy.checked;
-            if (this.fields.privacy.checked) {
-                this.fields.privacy.error = false;
+        toggleCheckbox(field) {
+            this.fields[field].checked = !this.fields[field].checked;
+            if (this.fields[field].checked) {
+                this.fields[field].error = false;
             }
         },
         validateField(field) {

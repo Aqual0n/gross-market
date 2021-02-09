@@ -21,6 +21,29 @@
         width: 100%;
     }
 
+    &__captcha {
+        background-color: $gray;
+        border-radius: rem(8);
+        box-sizing: border-box;
+        padding: rem(12) rem(16);
+    }
+
+    &__label {
+        width: 100%;
+        font-family: $med;
+        font-size: rem(14);
+        line-height: rem(18);
+        margin-bottom: rem(12);
+    }
+
+    &__required {
+        font-size: rem(14);
+        line-height: rem(18);
+        font-family: $med;
+        color: rgba($black, 0.3);
+        margin-top: rem(24);
+    }
+
     @media (min-width: $tablet) {
         &__line {
             display: flex;
@@ -29,6 +52,21 @@
             &--column {
                 flex-direction: column;
             }
+
+            &--wrap {
+                flex-wrap: wrap;
+                justify-content: flex-start;
+                align-items: center;
+            }
+        }
+
+        &__captcha {
+            width: rem(330);
+            margin-right: rem(30);
+        }
+
+        &__required {
+            margin-top: 0;
         }
 
         &__input {
@@ -45,6 +83,11 @@
     }
 
     @media (min-width: $desktop) {
+        &__captcha,
+        &__required {
+            width: rem(255);
+        }
+
         &__input {
             &--small {
                 width: rem(255);
