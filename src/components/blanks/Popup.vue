@@ -13,13 +13,13 @@ include ../../../tools/mixins.pug
         :style="headCss"
     )
         span {{ head }}
-        +e.close--head(
+        +e.BUTTON.close--head(
             v-on:click="$emit('closePopup')"
         )
     +e.inner(
         v-on:click.stop
     )
-        +e.close(
+        +e.BUTTON.close(
             v-on:click="$emit('closePopup')"
         )
         slot(

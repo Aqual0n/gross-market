@@ -56,5 +56,9 @@
         &__list {
             width: rem(225);
         }
+
+        &__item {
+            cursor: pointer;
+        }
     }
 }

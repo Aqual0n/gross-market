@@ -17,7 +17,8 @@ include ../../../tools/mixins.pug
             )
                 +e.A.phone(
                     href="tel:+7 (926) 433-14-16"
-                ) +7 (926) 433-14-16
+                )
+                    span +7 (926) 433-14-16
                 +e.ROUTER-LINK.button.button--standart.--font-size-medium.--background-yellow(
                     to="/form"
                     :class="{ active: showButton }"

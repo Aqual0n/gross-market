@@ -112,8 +112,37 @@
             margin-right: rem(301);
         }
 
+        &__social,
+        &__logo {
+            transition: 0.3s ease;
+            transition-property: opacity;
+
+            &:hover {
+                opacity: 0.6;
+            }
+        }
+
         &__privacy {
             margin-left: rem(428);
+            position: relative;
+
+            &::before {
+                display: block;
+                content: '';
+                position: absolute;
+                bottom: -4px;
+                width: 0;
+                height: 1px;
+                background-color: $black;
+                transition: 0.6s ease;
+                transition-property: width;
+            }
+
+            &:hover {
+                &::before {
+                    width: 100%;
+                }
+            }
         }
     }
 }

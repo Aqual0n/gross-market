@@ -73,4 +73,19 @@
             opacity: 1;
         }
     }
+
+    @media (min-width: $desktop) {
+        &__button {
+            transition: 0.3s ease;
+            transition-property: background-color;
+        }
+
+        &:hover {
+            .file-uploader {
+                &__button {
+                    background-color: rgba($black, 0.2);
+                }
+            }
+        }
+    }
 }

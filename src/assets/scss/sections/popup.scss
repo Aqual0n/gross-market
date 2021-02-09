@@ -117,5 +117,14 @@
             height: rem(90);
             padding: rem(30) rem(95);
         }
+
+        &__close {
+            transition: 0.3s ease;
+            transition-property: opacity;
+
+            &:hover {
+                opacity: 0.6;
+            }
+        }
     }
 }

@@ -46,6 +46,8 @@
             }
 
             &.active {
+                border-radius: rem(8) rem(8) 0 0;
+
                 &::before {
                     transform: rotate(180deg);
                 }
@@ -83,13 +85,13 @@
         top: 100%;
         z-index: 1;
         background-color: $gray;
-        padding-left: rem(16);
-        padding-bottom: rem(8);
         box-sizing: border-box;
         transition: 0.3s ease;
         transition-property: opacity;
         opacity: 0;
         pointer-events: none;
+        border-radius: 0 0 rem(8) rem(8);
+        overflow: hidden;
 
         &.active {
             opacity: 1;
@@ -98,11 +100,8 @@
     }
 
     &__item {
-        padding: rem(8) 0;
-
-        &:first-child {
-            padding-top: 0;
-        }
+        cursor: pointer;
+        padding: rem(8) 0 rem(8) rem(16);
     }
 
     &__error {
@@ -133,6 +132,32 @@
         .input {
             &__value {
                 background-color: rgba($red, 0.3);
+            }
+        }
+    }
+
+    @media (min-width: $desktop) {
+        &__value {
+            &--select {
+                cursor: pointer;
+            }
+        }
+
+        &__item {
+            cursor: pointer;
+            transition: 0.3s ease;
+            transition-property: background-color;
+
+            &:hover {
+                background-color: $yellow;
+            }
+        }
+
+        &:hover {
+            .input {
+                &__value {
+                    background-color: rgba($black, 0.2);
+                }
             }
         }
     }
